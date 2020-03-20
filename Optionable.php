@@ -14,41 +14,57 @@ trait Optionable
     public static function bootOptionable()
     {
         static::deleted(function (self $model) {
-            $model->deleteOption();
+            $model->deleteVoteOptions();
         });
     }
 
     /**
      * @param $name
      */
-    public function newOption($name)
+    public function newVoteOption($name)
     {
-        return $this->options()->create(['name' => $name]);
+        return $this->voteOptions()->create(['name' => $name]);
     }
 
     /**
      * @param $option_id
      * @param $name
      */
-    public function updateOption($option_id, $name)
+    public function updateVoteOption($option_id, $name)
     {
-        return $this->options()->where('id', $option_id)->update([
+        return $this->voteOptions()->where('id', $option_id)->update([
             'name' => $name
         ]);
     }
 
     /**
-     * @param $id
+     * @return bool
      */
-    public function deleteOption()
+    public function hasVoteOptions(): bool
     {
-        return $this->options()->delete();
+        return (bool) $this->voteOptions()->count();
+    }
+
+    /**
+     * @param $option_id
+     */
+    public function deleteVoteOption($option_id)
+    {
+        return $this->voteOptions()->where('id', $option_id)->delete();
+    }
+
+    /**
+     * 
+     */
+    public function deleteVoteOptions()
+    {
+        return $this->voteOptions()->delete();
     }
 
     /**
      * @return Illuminate\Database\Eloquent\Relations\MorphMany
      */
-    public function options()
+    public function voteOptions()
     {
         return $this->morphMany(Option::class, 'optionable');
     }
