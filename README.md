@@ -1,2 +1,4 @@
 # Votable
-Laravel tabanlı yapılar için bir model'a ait verileri, dinamik olarak tanımlanmış kriterlere göre oylama / puanlama yapılmasına imkan verir
+Vote system according to criteria for Laravel based models.
+
+[![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](http://github.com/badges/stability-badges)
