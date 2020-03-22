@@ -91,7 +91,7 @@ trait Votable
      */
     private function result($score)
     {
-        return substr(number_format($score, 4, '.', ''), 0, -1)
+        return substr(number_format($score, 4, '.', ''), 0, -1);
     }
 
     /**
