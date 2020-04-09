@@ -26,7 +26,7 @@ trait Votable
      * @param $rate
      * @param $option_id
      */
-    public function setVote($rate, $option_id)
+    public function setVote($rate, $option_id = null)
     {
         return $this->votes()->create([
             'rating'    => $rate,

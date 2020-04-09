@@ -25,7 +25,7 @@ class CreateVoteTable extends Migration
             $table->morphs('votable');
             $table->string('vote');
             $table->integer('user_id')->unsigned();
-            $table->integer('option_id')->unsigned();
+            $table->integer('option_id')->unsigned()->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')
@@ -36,7 +36,8 @@ class CreateVoteTable extends Migration
             $table->foreign('option_id')
                 ->references('id')
                 ->on('vote_options')
-                ->onDelete('cascade');
+                ->onDelete(DB::raw('set null'))
+                ->onUpdate('cascade');
         });
     }
 

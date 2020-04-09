@@ -15,7 +15,7 @@ class Vote extends Model
 	/**
 	 * 
 	 */
-	protected $fillable = ['votable_id', 'votable_type', 'vote', 'user_id', 'option_id'];
+	protected $fillable = ['vote', 'user_id', 'option_id'];
 
     /**
      * 
