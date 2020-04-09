@@ -15,7 +15,19 @@ class Vote extends Model
 	/**
 	 * 
 	 */
-	protected $fillable = ['vote', 'user_id', 'option_id'];
+	protected $fillable = ['rating', 'user_id', 'option_id'];
+
+    /**
+     * The "booted" method of the model.
+     *
+     * @return void
+     */
+    protected static function booted()
+    {
+        static::creating(function ($vote) {
+            $vote->user_id = auth()->user()->id;
+        });
+    }
 
     /**
      * 

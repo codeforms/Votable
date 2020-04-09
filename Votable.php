@@ -13,10 +13,6 @@ trait Votable
      */
     public static function bootVotable()
     {
-        static::creating(function (self $model) {
-            $model->user_id = auth()->user()->id;
-        });
-
         static::deleted(function (self $model) {
             $model->deleteVotes();
         });
@@ -32,6 +28,39 @@ trait Votable
             'rating'    => $rate,
             'option_id' => $option_id
         ]);
+    }
+
+    /**
+     * @return float
+     */
+    public function rating(): float
+    {
+        return self::result(self::averageRating());
+    }
+
+    /**
+     * @param int $star
+     * @return string
+     */
+    public function ratingPercent($star = 5): float
+    {
+        return self::result((self::averageRating() * 100) / $star);
+    }
+
+    /**
+     * @return float
+     */
+    public function averageRating(): float
+    {
+        return $this->votes()->avg('rating');
+    }
+
+    /**
+     * @return float
+     */
+    public function sumRating(): float
+    {
+        return $this->votes()->sum('rating');
     }
 
     /**
@@ -59,55 +88,12 @@ trait Votable
     }
 
     /**
-     * @param bool $percentage
-     * @param int $star
-     * 
-     * @return float
-     */
-    public function rating($percentage = false, $star = 5): float
-    {
-        return $percentage ? self::percentage($star) : self::score();
-    }
-
-    /**
-     * @param int $star
      * @access private
+     * @return string
      */
-    private function percentage($star)
-    {
-        return self::result((self::average() * 100) / $star);
-    }
-
-    /**
-     * @access private
-     */
-    private function score()
-    {
-        return self::result(self::average());
-    }
-
-    /**
-     * @access private
-     */
-    private function result($score)
+    private function result($score): float
     {
         return substr(number_format($score, 4, '.', ''), 0, -1);
-    }
-
-    /**
-     * @access private
-     */
-    private function average()
-    {
-        return self::sumRating() / self::countVotes();
-    }
-
-    /**
-     * @access private
-     */
-    private function sumRating()
-    {
-        return $this->votes()->sum('rating');
     }
 
     /**

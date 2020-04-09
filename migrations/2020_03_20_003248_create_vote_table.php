@@ -23,7 +23,7 @@ class CreateVoteTable extends Migration
         {
             $table->increments('id');
             $table->morphs('votable');
-            $table->string('vote');
+            $table->string('rating');
             $table->integer('user_id')->unsigned();
             $table->integer('option_id')->unsigned()->nullable();
             $table->timestamps();
