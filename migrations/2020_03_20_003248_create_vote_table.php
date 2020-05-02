@@ -13,7 +13,7 @@ class CreateVoteTable extends Migration
     {
         Schema::create('vote_options', function (Blueprint $table) 
         {
-            $table->increments('id');
+            $table->id();
             $table->string('name');
             $table->morphs('optionable');
             $table->timestamps();
@@ -21,7 +21,7 @@ class CreateVoteTable extends Migration
 
         Schema::create('votes', function (Blueprint $table) 
         {
-            $table->increments('id');
+            $table->id();
             $table->morphs('votable');
             $table->string('rating');
             $table->integer('user_id')->unsigned();
@@ -32,12 +32,6 @@ class CreateVoteTable extends Migration
                 ->references('id')
                 ->on('users')
                 ->onDelete('cascade');
-
-            $table->foreign('option_id')
-                ->references('id')
-                ->on('vote_options')
-                ->onDelete(DB::raw('set null'))
-                ->onUpdate('cascade');
         });
     }
 
