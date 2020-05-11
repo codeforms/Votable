@@ -27,11 +27,6 @@ class CreateVoteTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->integer('option_id')->unsigned()->nullable();
             $table->timestamps();
-
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
         });
     }
 
