@@ -43,13 +43,13 @@ class Contest extends Model
 Bir yarışma kaydı oluşturalım;
 ```php
 <?php
-Contest::create(['title' => 'Yüzyılın En İyi Film Ödülü Değerlendirme Kriterleri']);
+Contest::create(['title' => 'Yüzyılın En İyi Film Ödülleri']);
 
 ```
 Oluşturduğumuz yarışma için oylama kriterlerini/seçeneklerini oluşturalım;
 ```php
 <?php
-$contest = Contest::find(1); // Yüzyılın En İyi Film Ödülü Değerlendirme Kriterleri
+$contest = Contest::find(1); // Yüzyılın En İyi Film Ödülleri
 
 $contest->newVoteOption([
     'Senaryo',
