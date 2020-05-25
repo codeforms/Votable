@@ -97,10 +97,10 @@ trait Votable
     }
 
     /**
-	 * @return Illuminate\Database\Eloquent\Relations\MorphMany
-	 */
-	public function votes()
-	{
-		return $this->morphMany(Vote::class, 'votable');
-	}
+     * @return Illuminate\Database\Eloquent\Relations\MorphMany
+     */
+    public function votes()
+    {
+        return $this->morphMany(Vote::class, 'votable');
+    }
 }

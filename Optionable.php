@@ -8,7 +8,7 @@ use CodeForms\Repositories\Meta\Meta;
  */
 trait Optionable
 {
-	/**
+    /**
      * @return Illuminate\Database\Eloquent\Model
      */
     public static function bootOptionable()
@@ -27,9 +27,10 @@ trait Optionable
     {
         if((bool)count($options))
             foreach ($options as $option)
-                return $this->voteOptions()->create(['name' => $option]);
-
-        return null;
+                $this->voteOptions()->create(['name' => $option]);
+            return true;
+            
+        return false;
     }
 
     /**

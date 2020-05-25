@@ -1,18 +1,12 @@
 <?php 
 namespace CodeForms\Repositories\Vote;
 
-use CodeForms\Repositories\Meta\Metable;
 use Illuminate\Database\Eloquent\{Model};
 /**
  * @package CodeForms\Repositories\Vote\Option
  */
 class Option extends Model
-{
-	/**
-     * @link https://github.com/codeforms/Metable
-	 */
-	use Metable;
-	
+{	
 	/**
      * 
      */
