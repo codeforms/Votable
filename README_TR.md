@@ -3,7 +3,7 @@ Bir model kaynağının, -isteğe bağlı olarak- kayıtlı olan kriterlere gör
 
 [![GitHub license](https://img.shields.io/github/license/codeforms/Votable)](https://github.com/codeforms/Votable/blob/master/LICENSE)
 ![GitHub release (latest by date)](https://img.shields.io/github/v/release/codeforms/Votable)
-[![unstable](http://badges.github.io/stability-badges/dist/unstable.svg)](https://github.com/codeforms/Votable/releases)
+[![stable](http://badges.github.io/stability-badges/dist/stable.svg)](https://github.com/codeforms/Votable/releases)
 
 > Örnek olması için Filmler ve filmlerin belirli kriterlere göre oylanmasını örnek alıyoruz. Aşağıdaki örnekte, filmler için 'Movie' ve yarışmalar için (tercihen) 'Contest' adında iki model kaynağımızın olduğunu varsayıyoruz.
 
